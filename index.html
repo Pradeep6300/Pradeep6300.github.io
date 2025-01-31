@@ -8,21 +8,23 @@
     <script defer src="script.js"></script>
 </head>
 <body>
+
     <header>
         <nav>
             <div class="logo">YourBrand</div>
-            <ul>
+            <ul class="nav-links">
                 <li><a href="#about">About</a></li>
                 <li><a href="#services">Services</a></li>
                 <li><a href="#portfolio">Portfolio</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
+            <button class="menu-toggle">☰</button>
         </nav>
     </header>
     
     <section id="hero">
         <h1>Your Brand's Journey, <br>Our Creative Flow.</h1>
-        <button>Contact Me</button>
+        <button class="cta-button">Contact Me</button>
     </section>
     
     <section id="stats">
@@ -31,45 +33,23 @@
         <div class="stat">1B+ Assets Edited</div>
     </section>
     
-    <section id="clients">
-        <h2>Happy Clients</h2>
-        <div class="client-grid">
-            <div class="client">Client 1</div>
-            <div class="client">Client 2</div>
-            <div class="client">Client 3</div>
-        </div>
-    </section>
-    
     <section id="portfolio">
         <h2>My Work</h2>
         <div class="portfolio-grid">
-            <video src="pexels-sample.mp4" controls></video>
-            <video src="pexels-sample.mp4" controls></video>
-            <video src="pexels-sample.mp4" controls></video>
+            <video src="https://www.pexels.com/video/123456" controls></video>
+            <video src="https://www.pexels.com/video/123457" controls></video>
+            <video src="https://www.pexels.com/video/123458" controls></video>
         </div>
     </section>
     
     <section id="contact">
         <h2>Contact Me</h2>
-        <button>Get In Touch</button>
+        <button class="cta-button">Get In Touch</button>
     </section>
     
     <footer>
         <p>&copy; 2025 YourBrand. All Rights Reserved.</p>
     </footer>
-    
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const nav = document.querySelector("nav");
-            window.addEventListener("scroll", function() {
-                if (window.scrollY > 50) {
-                    nav.classList.add("scrolled");
-                } else {
-                    nav.classList.remove("scrolled");
-                }
-            });
-        });
-    </script>
+
 </body>
 </html>
-
