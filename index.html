@@ -3,47 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name - Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Your Editing Agency Portfolio</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <h1>Your Name</h1>
-        <p>Welcome to my portfolio! I am a [your profession or title].</p>
+        <h1>Your Editing Agency</h1>
+        <nav>
+            <ul>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
     </header>
-    
-    <nav>
-        <ul>
-            <li><a href="#about">About Me</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
-    
+
+    <section id="hero">
+        <div class="container">
+            <h2>Welcome to Our Editing Agency</h2>
+            <p>We craft compelling stories through exceptional editing.</p>
+            <a href="#services" class="btn">Explore Our Services</a>
+        </div>
+    </section>
+
     <section id="about">
-        <h2>About Me</h2>
-        <p>A brief introduction about yourself and your background.</p>
+        <h2>About Us</h2>
+        <p>Tell your agency's story here.</p>
     </section>
-    
-    <section id="projects">
-        <h2>Projects</h2>
-        <article>
-            <h3>Project Title</h3>
-            <p>Description of the project.</p>
-            <a href="link-to-project">View Project</a>
-        </article>
-        <!-- Repeat for other projects -->
+
+    <section id="services">
+        <h2>Our Services</h2>
+        <div class="container">
+            <div class="service">
+                <h3>Video Editing</h3>
+                <p>Description of your video editing services.</p>
+            </div>
+            <div class="service">
+                <h3>Color Grading</h3>
+                <p>Description of your color grading services.</p>
+            </div>
+            <div class="service">
+                <h3>Motion Graphics</h3>
+                <p>Description of your motion graphics services.</p>
+            </div>
+        </div>
     </section>
-    
-    <section id="skills">
-        <h2>Skills</h2>
-        <p>List of your technical skills and tools you are familiar with.</p>
+
+    <section id="portfolio">
+        <h2>Our Portfolio</h2>
+        <div class="container">
+            <div class="portfolio-item">
+                <img src="image1.jpg" alt="Portfolio Image 1">
+            </div>
+            <div class="portfolio-item">
+                <img src="image2.jpg" alt="Portfolio Image 2">
+            </div>
+            <div class="portfolio-item">
+                <img src="image3.jpg" alt="Portfolio Image 3">
+            </div>
+        </div>
     </section>
-    
+
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <form>
+            <input type="text" placeholder="Name" required>
+            <input type="email" placeholder="Email" required>
+            <textarea placeholder="Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
     <footer>
-        <h2>Contact</h2>
-        <p>Email: your.email@example.com</p>
+        <p>&copy; 2023 Your Editing Agency</p>
     </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
