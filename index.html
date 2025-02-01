@@ -3,81 +3,434 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YourBrand - Luxury Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
-    <script defer src="script.js"></script>
+    <title>VideoEdit Pro</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background-color: black;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(28, 221, 0, 0.2);
+            z-index: 50;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: #1cdd00;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: none;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .nav-links {
+                display: flex;
+            }
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #1cdd00;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #1cdd00;
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .contact-btn {
+            background-color: #1cdd00;
+            color: black;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 0 20px rgba(28, 221, 0, 0.2);
+        }
+
+        .contact-btn:hover {
+            background-color: #19c400;
+            box-shadow: 0 0 20px rgba(28, 221, 0, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 5rem 1rem 4rem;
+            position: relative;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            opacity: 0.2;
+        }
+
+        .hero-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-content {
+            max-width: 64rem;
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 7vw, 4.5rem);
+            color: #1cdd00;
+            margin-bottom: 1.5rem;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .hero p {
+            font-size: clamp(1.25rem, 2vw, 1.5rem);
+            color: #d1d1d1;
+            margin-bottom: 2rem;
+        }
+
+        /* Skills Section */
+        .skills {
+            padding: 5rem 1rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: #1cdd00;
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .skill-card {
+            background: linear-gradient(to bottom right, black, rgba(28, 221, 0, 0.1));
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            border: 1px solid rgba(28, 221, 0, 0.2);
+            transition: all 0.5s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-card:hover {
+            border-color: #1cdd00;
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(28, 221, 0, 0.2);
+        }
+
+        .skill-icon {
+            width: 4rem;
+            height: 4rem;
+            margin: 0 auto 1rem;
+            background-color: rgba(28, 221, 0, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 5rem 1rem;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background: linear-gradient(to bottom right, black, rgba(28, 221, 0, 0.1));
+            padding: 2rem;
+            border-radius: 0.5rem;
+            border: 1px solid rgba(28, 221, 0, 0.2);
+            transition: all 0.5s;
+        }
+
+        .testimonial-card:hover {
+            border-color: #1cdd00;
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(28, 221, 0, 0.2);
+        }
+
+        .testimonial-image {
+            width: 4rem;
+            height: 4rem;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            border: 2px solid rgba(28, 221, 0, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            background-color: black;
+            border-top: 1px solid rgba(28, 221, 0, 0.2);
+            padding: 3rem 1rem;
+            position: relative;
+        }
+
+        .footer-wave {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h3 {
+            color: #1cdd00;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: #d1d1d1;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: #1cdd00;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            width: 2.5rem;
+            height: 2.5rem;
+            background-color: rgba(28, 221, 0, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .social-link:hover {
+            background-color: #1cdd00;
+            color: black;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
 </head>
 <body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <h1 class="logo">VideoEdit Pro</h1>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#why-us">Why Us</a>
+                <a href="#testimonials">Testimonials</a>
+            </div>
+            <button class="contact-btn">Contact Us</button>
+        </div>
+    </nav>
 
-    <header>
-        <nav>
-            <div class="logo">YourBrand</div>
-            <ul class="nav-links">
-                <li><a href="#hero">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#testimonials">Testimonials</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <button class="menu-toggle">☰</button>
-        </nav>
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-bg">
+            <img src="/api/placeholder/1920/1080" alt="Background">
+        </div>
+        <div class="hero-content">
+            <h1>Master Video Editing</h1>
+            <p>Turn Your Creative Vision into Professional Content</p>
+            <button class="contact-btn">Start Your Journey</button>
+            <p style="margin-top: 1rem; color: #666;">6+ Years of Excellence in Video Education</p>
+        </div>
     </header>
 
-    <section id="hero">
-        <h1 class="fade-in">Welcome to <span>YourBrand</span></h1>
-        <p class="slide-up">We craft luxury experiences through design & innovation.</p>
-        <button class="cta-button scale-in">Discover More</button>
-    </section>
-
-    <section id="about" class="fade-in">
-        <h2>About Me</h2>
-        <p>With over 10 years of experience in digital design, I bring creativity and perfection to every project.</p>
-    </section>
-
-    <section id="services" class="slide-up">
-        <h2>Services</h2>
-        <div class="service-box">
-            <h3>Luxury Branding</h3>
-            <p>We create high-end brands that stand out.</p>
-        </div>
-        <div class="service-box">
-            <h3>Creative Filmmaking</h3>
-            <p>From commercials to short films, we craft visual masterpieces.</p>
-        </div>
-        <div class="service-box">
-            <h3>AI-Driven Editing</h3>
-            <p>Using cutting-edge AI tools to refine perfection.</p>
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <h2 class="section-title">Master These Skills</h2>
+        <div class="skills-grid">
+            <!-- Skills will be dynamically added here -->
         </div>
     </section>
 
-    <section id="portfolio">
-        <h2 class="fade-in">My Work</h2>
-        <div class="portfolio-grid slide-up">
-            <video src="video1.mp4" controls></video>
-            <video src="video2.mp4" controls></video>
-            <video src="video3.mp4" controls></video>
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <h2 class="section-title">Student Success Stories</h2>
+        <div class="testimonials-grid">
+            <!-- Testimonials will be dynamically added here -->
         </div>
     </section>
 
-    <section id="testimonials">
-        <h2 class="fade-in">What My Clients Say</h2>
-        <div class="testimonial slide-up">
-            <p>"Absolutely mind-blowing work! The best in the industry." - <strong>Luxury Brand CEO</strong></p>
-        </div>
-        <div class="testimonial slide-up">
-            <p>"Every frame tells a story. Incredible attention to detail." - <strong>Hollywood Director</strong></p>
-        </div>
-    </section>
-
-    <section id="contact">
-        <h2 class="fade-in">Get in Touch</h2>
-        <button class="cta-button scale-in">Let's Collaborate</button>
-    </section>
-
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2025 YourBrand. All Rights Reserved.</p>
+        <div class="footer-wave">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" fill="rgba(28, 221, 0, 0.1)"></path>
+            </svg>
+        </div>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>VideoEdit Pro</h3>
+                <p>Transforming passionate creators into professional editors.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">Courses</a></li>
+                    <li><a href="#">Resources</a></li>
+                    <li><a href="#">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <ul>
+                    <li>support@videoeditpro.com</li>
+                    <li>+1 (555) 123-4567</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="#" class="social-link">T</a>
+                    <a href="#" class="social-link">Y</a>
+                    <a href="#" class="social-link">I</a>
+                </div>
+            </div>
+        </div>
     </footer>
 
+    <script>
+        // Scroll handling
+        let scrollY = 0;
+        const heroBackground = document.querySelector('.hero-bg');
+        
+        window.addEventListener('scroll', () => {
+            scrollY = window.scrollY;
+            if (heroBackground) {
+                heroBackground.style.transform = `translateY(${scrollY * 0.5}px)`;
+            }
+        });
+
+        // Skills data
+        const skills = [
+            { name: 'Premiere Pro', desc: 'Professional video editing' },
+            { name: 'After Effects', desc: 'Motion graphics & VFX' },
+            { name: 'Photoshop', desc: 'Image manipulation' },
+            { name: 'YouTube Growth', desc: 'Channel optimization' }
+        ];
+
+        // Populate skills section
+        const skillsGrid = document.querySelector('.skills-grid');
+        skills.forEach((skill, index) => {
+            const skillCard = document.createElement('div');
+            skillCard.className = 'skill-card';
+            skillCard.innerHTML = `
+                <div class="skill-icon">
+                    <img src="/api/placeholder/64/64" alt="${skill.name}" style="width: 2rem; height: 2rem;">
+                </div>
+                <h3 style="text-align: center; margin-bottom: 0.5rem;">${skill.name}</h3>
+                <p style="color: #666; text-align: center;">${skill.desc}</p>
+            `;
+            skillsGrid.appendChild(skillCard);
+        });
+
+        // Testimonials data
+        const testimonials = [
+            { name: 'Alex Chen', role: 'Freelance Editor', quote: 'This program helped me land my first major client within weeks.' },
+            { name: 'Sarah Johnson', role: 'YouTube Creator', quote: 'The skills I learned helped me grow my channel to 100K subscribers.' },
+            { name: 'Mike Williams', role: 'Studio Owner', quote: 'I started my own post-production studio thanks to this course.' }
+        ];
+
+        // Populate testimonials section
+        const testimonialsGrid = document.querySelector('.testimonials-grid');
+        testimonials.forEach(testimonial => {
+            const testimonialCard = document.createElement('div');
+            testimonialCard.className = 'testimonial-card';
+            testimonialCard.innerHTML = `
+                <img src="/api/placeholder/64/64" alt="${testimonial.name}" class="testimonial-image">
+                <p style="color: #d1d1d1; margin-bottom: 1rem; text-align: center;">"${testimonial.quote}"</p>
+                <h4 style="text-align: center; margin-bottom: 0.25rem;">${testimonial.name}</h4>
+                <p style="color: #1cdd00; text-align: center; font-size: 0.875rem;">${testimonial.role}</p>
+            `;
+            testimonialsGrid.appendChild(testimonialCard);
+        });
+    </script>
 </body>
 </html>
