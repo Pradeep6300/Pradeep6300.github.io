@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Portfolio</title>
+    <title>YourBrand - Luxury Portfolio</title>
     <link rel="stylesheet" href="styles.css">
     <script defer src="script.js"></script>
 </head>
@@ -13,40 +13,68 @@
         <nav>
             <div class="logo">YourBrand</div>
             <ul class="nav-links">
+                <li><a href="#hero">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#services">Services</a></li>
                 <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
             <button class="menu-toggle">☰</button>
         </nav>
     </header>
-    
+
     <section id="hero">
-        <h1>Your Brand's Journey, <br>Our Creative Flow.</h1>
-        <button class="cta-button">Contact Me</button>
+        <h1 class="fade-in">Welcome to <span>YourBrand</span></h1>
+        <p class="slide-up">We craft luxury experiences through design & innovation.</p>
+        <button class="cta-button scale-in">Discover More</button>
     </section>
-    
-    <section id="stats">
-        <div class="stat">200M+ Views</div>
-        <div class="stat">5M+ Community</div>
-        <div class="stat">1B+ Assets Edited</div>
+
+    <section id="about" class="fade-in">
+        <h2>About Me</h2>
+        <p>With over 10 years of experience in digital design, I bring creativity and perfection to every project.</p>
     </section>
-    
-    <section id="portfolio">
-        <h2>My Work</h2>
-        <div class="portfolio-grid">
-            <video src="https://www.pexels.com/video/123456" controls></video>
-            <video src="https://www.pexels.com/video/123457" controls></video>
-            <video src="https://www.pexels.com/video/123458" controls></video>
+
+    <section id="services" class="slide-up">
+        <h2>Services</h2>
+        <div class="service-box">
+            <h3>Luxury Branding</h3>
+            <p>We create high-end brands that stand out.</p>
+        </div>
+        <div class="service-box">
+            <h3>Creative Filmmaking</h3>
+            <p>From commercials to short films, we craft visual masterpieces.</p>
+        </div>
+        <div class="service-box">
+            <h3>AI-Driven Editing</h3>
+            <p>Using cutting-edge AI tools to refine perfection.</p>
         </div>
     </section>
-    
-    <section id="contact">
-        <h2>Contact Me</h2>
-        <button class="cta-button">Get In Touch</button>
+
+    <section id="portfolio">
+        <h2 class="fade-in">My Work</h2>
+        <div class="portfolio-grid slide-up">
+            <video src="video1.mp4" controls></video>
+            <video src="video2.mp4" controls></video>
+            <video src="video3.mp4" controls></video>
+        </div>
     </section>
-    
+
+    <section id="testimonials">
+        <h2 class="fade-in">What My Clients Say</h2>
+        <div class="testimonial slide-up">
+            <p>"Absolutely mind-blowing work! The best in the industry." - <strong>Luxury Brand CEO</strong></p>
+        </div>
+        <div class="testimonial slide-up">
+            <p>"Every frame tells a story. Incredible attention to detail." - <strong>Hollywood Director</strong></p>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2 class="fade-in">Get in Touch</h2>
+        <button class="cta-button scale-in">Let's Collaborate</button>
+    </section>
+
     <footer>
         <p>&copy; 2025 YourBrand. All Rights Reserved.</p>
     </footer>
