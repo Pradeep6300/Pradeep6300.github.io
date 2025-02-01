@@ -14,4 +14,16 @@ document.addEventListener("DOMContentLoaded", function () {
     menuToggle.addEventListener("click", function () {
         navLinks.classList.toggle("show");
     });
+
+    /* Reveal Animation on Scroll */
+    const elements = document.querySelectorAll('.fade-in, .slide-up, .scale-in');
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('show');
+            }
+        });
+    }, { threshold: 0.2 });
+
+    elements.forEach(element => observer.observe(element));
 });
