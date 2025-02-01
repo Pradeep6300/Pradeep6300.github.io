@@ -1,111 +1,94 @@
-body {
-    font-family: "Poppins", sans-serif;
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(to right, #0a0a0a, #1b1b1b);
-    color: white;
-    text-align: center;
-}
+/* Add these animation styles to your existing CSS */
 
-nav {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background: transparent;
-    padding: 20px;
-    transition: 0.3s;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-nav.scrolled {
-    background: rgba(0, 0, 0, 0.8);
-}
-
-.nav-links {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-}
-
-.nav-links li {
-    display: inline;
-}
-
-.nav-links a {
-    color: white;
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-.nav-links a:hover {
-    color: #ffcc00;
-}
-
-.menu-toggle {
-    display: none;
-    background: none;
-    border: none;
-    font-size: 24px;
-    color: white;
-    cursor: pointer;
-}
-
-.cta-button {
-    background: #ffcc00;
-    color: black;
-    padding: 12px 24px;
-    border: none;
-    cursor: pointer;
-    transition: transform 0.3s ease-in-out;
-    font-size: 18px;
-}
-
-.cta-button:hover {
-    transform: scale(1.1);
-}
-
-/* Animations */
-.fade-in {
+/* Base animation classes */
+.animate {
     opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 1s ease-out, transform 1s ease-out;
+    transition: all 0.8s ease-out;
 }
 
-.slide-up {
-    opacity: 0;
-    transform: translateY(50px);
-    transition: opacity 1s ease-out, transform 1s ease-out;
+/* Different animation types */
+.fade-up {
+    transform: translateY(40px);
 }
 
-.scale-in {
-    opacity: 0;
-    transform: scale(0.8);
-    transition: opacity 1s ease-out, transform 1s ease-out;
-}
-
-.show {
+.fade-up.animate-in {
     opacity: 1;
     transform: translateY(0);
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-    .nav-links {
-        display: none;
-        flex-direction: column;
-    }
-
-    .menu-toggle {
-        display: block;
-    }
-
-    .portfolio-grid {
-        flex-direction: column;
-    }
-
-    video {
-        width: 90%;
-    }
+.fade-in-right {
+    transform: translateX(40px);
 }
+
+.fade-in-right.animate-in {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.fade-in-left {
+    transform: translateX(-40px);
+}
+
+.fade-in-left.animate-in {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.scale-up {
+    transform: scale(0.9);
+}
+
+.scale-up.animate-in {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Stagger delays for grid items */
+.skills-grid .skill-card {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.6s ease-out;
+}
+
+.skills-grid .skill-card.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.skills-grid .skill-card:nth-child(1) { transition-delay: 0.1s; }
+.skills-grid .skill-card:nth-child(2) { transition-delay: 0.2s; }
+.skills-grid .skill-card:nth-child(3) { transition-delay: 0.3s; }
+.skills-grid .skill-card:nth-child(4) { transition-delay: 0.4s; }
+
+/* Testimonial card animations */
+.testimonials-grid .testimonial-card {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.6s ease-out;
+}
+
+.testimonials-grid .testimonial-card.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.testimonials-grid .testimonial-card:nth-child(1) { transition-delay: 0.1s; }
+.testimonials-grid .testimonial-card:nth-child(2) { transition-delay: 0.2s; }
+.testimonials-grid .testimonial-card:nth-child(3) { transition-delay: 0.3s; }
+
+/* Footer animations */
+.footer-section {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease-out;
+}
+
+.footer-section.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.footer-section:nth-child(1) { transition-delay: 0.1s; }
+.footer-section:nth-child(2) { transition-delay: 0.2s; }
+.footer-section:nth-child(3) { transition-delay: 0.3s; }
+.footer-section:nth-child(4) { transition-delay: 0.4s; }
