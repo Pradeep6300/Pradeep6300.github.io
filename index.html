@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <head>
+        <link rel="stylesheet" href="styles.css">
+      </head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VideoEdit Pro</title>
@@ -312,29 +315,27 @@
     <!-- Hero Section -->
     <header class="hero">
         <div class="hero-bg">
-            <img src="/api/placeholder/1920/1080" alt="Background">
+            <img src="your-image.jpg" alt="Hero Background">
         </div>
         <div class="hero-content">
-            <h1>Master Video Editing</h1>
-            <p>Turn Your Creative Vision into Professional Content</p>
-            <button class="contact-btn">Start Your Journey</button>
-            <p style="margin-top: 1rem; color: #666;">6+ Years of Excellence in Video Education</p>
+            <h1>Transform Your Videos with Professional Editing</h1>
+            <p>Get top-notch video editing with the power of AI. Tailor your creative vision with precision.</p>
         </div>
     </header>
 
     <!-- Skills Section -->
-    <section id="skills" class="skills">
-        <h2 class="section-title">Master These Skills</h2>
+    <section class="skills" id="skills">
+        <h2 class="section-title">Our Skills</h2>
         <div class="skills-grid">
-            <!-- Skills will be dynamically added here -->
+            <!-- Dynamically loaded skill cards will go here -->
         </div>
     </section>
 
     <!-- Testimonials Section -->
-    <section id="testimonials" class="testimonials">
-        <h2 class="section-title">Student Success Stories</h2>
+    <section class="testimonials" id="testimonials">
+        <h2 class="section-title">What Our Clients Say</h2>
         <div class="testimonials-grid">
-            <!-- Testimonials will be dynamically added here -->
+            <!-- Dynamically loaded testimonials will go here -->
         </div>
     </section>
 
@@ -377,60 +378,105 @@
     </footer>
 
     <script>
-        // Scroll handling
-        let scrollY = 0;
-        const heroBackground = document.querySelector('.hero-bg');
-        
-        window.addEventListener('scroll', () => {
-            scrollY = window.scrollY;
-            if (heroBackground) {
-                heroBackground.style.transform = `translateY(${scrollY * 0.5}px)`;
-            }
-        });
-
-        // Skills data
+        // JavaScript for dynamic skill cards
         const skills = [
             { name: 'Premiere Pro', desc: 'Professional video editing' },
             { name: 'After Effects', desc: 'Motion graphics & VFX' },
-            { name: 'Photoshop', desc: 'Image manipulation' },
-            { name: 'YouTube Growth', desc: 'Channel optimization' }
+            { name: 'DaVinci Resolve', desc: 'Color grading' },
+            { name: 'Final Cut Pro', desc: 'Video editing on Mac' },
+            { name: 'AI Video Editing', desc: 'Automated editing with AI' }
         ];
 
-        // Populate skills section
         const skillsGrid = document.querySelector('.skills-grid');
-        skills.forEach((skill, index) => {
+        skills.forEach(skill => {
             const skillCard = document.createElement('div');
-            skillCard.className = 'skill-card';
+            skillCard.classList.add('skill-card');
             skillCard.innerHTML = `
-                <div class="skill-icon">
-                    <img src="/api/placeholder/64/64" alt="${skill.name}" style="width: 2rem; height: 2rem;">
-                </div>
-                <h3 style="text-align: center; margin-bottom: 0.5rem;">${skill.name}</h3>
-                <p style="color: #666; text-align: center;">${skill.desc}</p>
+                <div class="skill-icon"></div>
+                <h3>${skill.name}</h3>
+                <p>${skill.desc}</p>
             `;
             skillsGrid.appendChild(skillCard);
         });
 
-        // Testimonials data
+        // JavaScript for dynamic testimonials
         const testimonials = [
-            { name: 'Alex Chen', role: 'Freelance Editor', quote: 'This program helped me land my first major client within weeks.' },
-            { name: 'Sarah Johnson', role: 'YouTube Creator', quote: 'The skills I learned helped me grow my channel to 100K subscribers.' },
-            { name: 'Mike Williams', role: 'Studio Owner', quote: 'I started my own post-production studio thanks to this course.' }
+            { name: 'John Doe', feedback: 'VideoEdit Pro transformed my projects!' },
+            { name: 'Jane Smith', feedback: 'The AI-powered editing is a game changer!' }
         ];
 
-        // Populate testimonials section
         const testimonialsGrid = document.querySelector('.testimonials-grid');
         testimonials.forEach(testimonial => {
             const testimonialCard = document.createElement('div');
-            testimonialCard.className = 'testimonial-card';
+            testimonialCard.classList.add('testimonial-card');
             testimonialCard.innerHTML = `
-                <img src="/api/placeholder/64/64" alt="${testimonial.name}" class="testimonial-image">
-                <p style="color: #d1d1d1; margin-bottom: 1rem; text-align: center;">"${testimonial.quote}"</p>
-                <h4 style="text-align: center; margin-bottom: 0.25rem;">${testimonial.name}</h4>
-                <p style="color: #1cdd00; text-align: center; font-size: 0.875rem;">${testimonial.role}</p>
+                <div class="testimonial-image"></div>
+                <p>${testimonial.feedback}</p>
+                <h4>${testimonial.name}</h4>
             `;
             testimonialsGrid.appendChild(testimonialCard);
         });
+    // Add this JavaScript code after your existing JavaScript
+
+// Intersection Observer for animations
+const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.2
+};
+
+function initializeAnimations() {
+    // Add animation classes to elements
+    document.querySelector('.hero-content').classList.add('animate', 'fade-up');
+    document.querySelectorAll('.section-title').forEach(title => {
+        title.classList.add('animate', 'fade-up');
+    });
+    
+    // Add animation classes to existing elements
+    document.querySelectorAll('.skill-card, .testimonial-card, .footer-section').forEach(el => {
+        el.classList.add('animate');
+    });
+
+    // Create intersection observer
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate-in');
+                // Optional: Uncomment to observe only once
+                // observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    // Observe all animated elements
+    document.querySelectorAll('.animate').forEach(element => {
+        observer.observe(element);
+    });
+
+    // Trigger hero animation immediately
+    setTimeout(() => {
+        document.querySelector('.hero-content').classList.add('animate-in');
+    }, 100);
+}
+
+// Initialize animations when DOM is loaded
+document.addEventListener('DOMContentLoaded', initializeAnimations);
+
+// Smooth scroll for navigation links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+});
+
+
     </script>
 </body>
 </html>
